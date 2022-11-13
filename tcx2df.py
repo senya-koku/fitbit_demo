@@ -41,12 +41,8 @@ def xml2df(xml_data):
     return df
 
 
-def convert_dt(a):
-    return a[:-6]
-
-
 def pp_data(df):
-    df['Time'] = pd.to_datetime(df['Time'].apply(convert_dt))
+    df['Time'] = pd.to_datetime(df['Time'].apply(lambda x: x[:-6]))
     df['Latitude'] = df['LatitudeDegrees'].astype('float')
     df['Longitude'] = df['LongitudeDegrees'].astype('float')
     df['Altitude'] = df['AltitudeMeters'].astype('float')
