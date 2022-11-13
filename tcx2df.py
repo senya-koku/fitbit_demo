@@ -1,6 +1,6 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
-import matplotlib.pyplot as plt
+
 
 def remove_unnecessary_attribute(lines):
     #xmlファイルとして読み込むときに邪魔になるattributeを除去
@@ -41,12 +41,12 @@ def xml2df(xml_data):
     return df
 
 
-def convert(a):
+def convert_dt(a):
     return a[:-6]
 
 
 def pp_data(df):
-    df['Time'] = pd.to_datetime(df['Time'].apply(convert))
+    df['Time'] = pd.to_datetime(df['Time'].apply(convert_dt))
     df['Latitude'] = df['LatitudeDegrees'].astype('float')
     df['Longitude'] = df['LongitudeDegrees'].astype('float')
     df['Altitude'] = df['AltitudeMeters'].astype('float')
