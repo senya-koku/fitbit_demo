@@ -20,13 +20,9 @@ def tcx_file_convert(path_tcx_file):
         lines = f.readlines()
         first = []
     first.append(lines[0])
-    first
     new_lines = first + lines[11:-8]
     new_lines = remove_unnecessary_attribute(new_lines)
-    path_new = path_tcx_file[:-4] + '_new.tcx'
-    with open(path_new, mode='w') as f:
-        f.writelines(new_lines)
-    return path_new
+    return "".join(new_lines)
 
 
 def xml2df(xml_data):
